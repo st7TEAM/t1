@@ -133,7 +133,7 @@ class mbInstallMain(Screen):
 		self["lab1"].setText(message)
 		
 		
-    		if not fileExists("/proc/stb/info/vumodel"):
+    		if not fileExists("/proc/stb/info/gbmodel"):
 			self.myClose(_("Sorry, Meoboot can be installed only on Vuplus machines."))
 		
 		
