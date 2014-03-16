@@ -205,24 +205,28 @@ def MeobootExtract(source, target):
    		return 0
 		
 	rc = os.system("rm " +  sourcefile)
-	os.chdir("vuplus")
+	os.chdir("gigablue")
 	
-	rootfname = "root_cfe_auto.jffs2"
+	rootfname = "rootfs.bin"
 	
-	if os.path.exists("./ultimo") is True:
-		os.chdir("ultimo")
-	elif os.path.exists("./uno") is True:
-		os.chdir("uno")
-	elif os.path.exists("./duo") is True:
-		os.chdir("duo")
-	elif os.path.exists("./solo") is True:
-		os.chdir("solo")
-	elif os.path.exists("./solo2") is True:
-		os.chdir("solo2")
-		rootfname = "root_cfe_auto.bin"
-	elif os.path.exists("./duo2") is True:
-		os.chdir("duo2")
-		rootfname = "root_cfe_auto.bin"
+	if os.path.exists("./quadplus") is True:
+		os.chdir("quadplus")
+		rootfname = "rootfs.bin"
+	elif os.path.exists("./quad") is True:
+		os.chdir("quad")
+		rootfname = "rootfs.bin"
+	elif os.path.exists("./gb800se") is True:
+		os.chdir("gb800se")
+		rootfname = "rootfs.bin"
+	elif os.path.exists("./gb800ue") is True:
+		os.chdir("gb800ue")
+		rootfname = "rootfs.bin"
+	elif os.path.exists("./gb800seplus") is True:
+		os.chdir("gb800seplus")
+		rootfname = "rootfs.bin"
+	elif os.path.exists("./gb800ueplus") is True:
+		os.chdir("gb800seplus")
+		rootfname = "rootfs.bin"
 		
 	rc = os.system("modprobe nandsim cache_file=/media/meoboot/image_cache first_id_byte=0x20 second_id_byte=0xaa third_id_byte=0x00 fourth_id_byte=0x15")
 	cmd = "dd if=%s of=/dev/mtdblock%s bs=2048" % (rootfname, mtd)
@@ -232,7 +236,7 @@ def MeobootExtract(source, target):
 	rc = os.system("mount -t ubifs ubi1_0 /media/meoboot/ubi")
 	
 	os.chdir("/home/root")
-	rc = os.system("rm -r /media/meoboot/MbootUpload/vuplus")
+	rc = os.system("rm -r /media/meoboot/MbootUpload/gigablue")
 	
 	cmd = "cp -r /media/meoboot/ubi/* /media/meoboot/MbootM/" + target
 	rc = os.system(cmd)

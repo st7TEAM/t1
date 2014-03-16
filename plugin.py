@@ -383,15 +383,6 @@ class Mystart(Screen):
 		elif int(self.availablespace) < 500:
 			myerror = _("Sorry there is not enought available space on your device. You need at least 500 Mb free to install a new image")
 			self.session.open(MessageBox, myerror, MessageBox.TYPE_INFO)
-		elif fileExists("/proc/blackhole/version") == False:
-			myerror = _("Sorry. Wrong image in Flash. You need to install in flash one original Black Hole image.")
-			self.session.open(MessageBox, myerror, MessageBox.TYPE_INFO)
-		elif fileExists("/dev/blackhole") == False:
-			myerror = _("Sorry. Wrong image in Flash. You need to install in flash one original Black Hole image.")
-			self.session.open(MessageBox, myerror, MessageBox.TYPE_INFO)
-		elif fileExists("/etc/bhversion") == False:
-			myerror = _("Sorry. I cannot extract the image. To install a new image you have to run meoboot on a Black Hole image.")
-			self.session.open(MessageBox, myerror, MessageBox.TYPE_INFO)
 		else:
 			self.session.open(mbImageSetup)
 			
@@ -472,9 +463,9 @@ class mbImageSetup(Screen, ConfigListScreen):
 			self.session.open(MessageBox, myerror, MessageBox.TYPE_INFO)
 		else:
 			message = "echo -e '\n\n"
-			message += _("Meoboot will stop all your Vu+ activity now to install the new image.")
-			message += _("Your Vu+ will freeze during the installation process.")
-			message += _("Please: DO NOT reboot your Vu+ and turn off the power.\n")
+			message += _("Meoboot will stop all your openView activity now to install the new image.")
+			message += _("Your openView will freeze during the installation process.")
+			message += _("Please: DO NOT reboot your openView and turn off the power.\n")
 			message += _("The new image will be installed and auto booted in few minutes.")
 			message += "'"
 			cmd1 = pluginpath + "/ex_init.py"
@@ -506,9 +497,9 @@ class MyHelp(Screen):
 		self.updatetext()
 		
 	def updatetext(self):
-		message = "MEOBOOT V." + PLUGINVERSION + " for Vu+ \nLight Multiboot\n\n"
+		message = "MEOBOOT V." + PLUGINVERSION + " for openView \nLight Multiboot\n\n"
 		message += "Author: Bacicciosat aka *meo \nGraphics: Army\nMain tester: matrix10\n\n"
-		message += _("Requirements:\nMeoBoot require a Vu+ machine and Hdd or Usb pen drive.\n\n")
+		message += _("Requirements:\nMeoBoot require a openView machine and Hdd or Usb pen drive.\n\n")
 		message += _("Instructions:\nMeoBoot installation and upgrade is easy and intuitive.\nTo install a new image in multiboot you have only to upload your *.zip file in the folder \"/media/meoboot/MbootUpload\" and click on the <Install Image> button>\n\n")
 		message += _("Uninstall Meoboot:\nTo completely remove meoboot form your flash image you have to delete the folders:\n/media/meoboot/MbootM\n/media/meoboot/MbootUpload\n/media/meoboot\n/usr/lib/enigma2/python/Plugins/Extensions/MeoBoot\n\n")
 		message += _("Have fun !!")
