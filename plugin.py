@@ -133,10 +133,6 @@ class mbInstallMain(Screen):
 		self["lab1"].setText(message)
 		
 		
-    		if not fileExists("/proc/stb/info/gbmodel"):
-			self.myClose(_("Sorry, Meoboot can be installed only on Vuplus machines."))
-		
-		
 		if fileExists("/.meoinfo"):
 			self.myClose(_("Sorry, Meoboot can be installed or upgraded only when booted from Flash"))
 		
@@ -176,7 +172,7 @@ class mbInstallMain(Screen):
 				mydev = parts[0]
 		f.close()
 		
-		if os_isdir("/usr/lib/enigma2/python/Blackhole") == False:
+		#if os_isdir("/usr/lib/enigma2/python/Blackhole") == False:
 			if mydev:
 				out = open("/etc/init.d/bootup", "a")		
 				line = "\nmount " + mydev + " " + self.instdevice

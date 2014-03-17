@@ -53,14 +53,6 @@ def MeobootMainEx(source, target, installsettings):
 	rc = os.system(cmd)
 	cmd = "cp -r /lib  %s/MbootM/%s/" % (meohome, target)
 	rc = os.system(cmd)
-	cmd = "rm  %s/MbootM/%s/etc/rc3.d/S20usbtunerhelper" % (meohome, target)
-	rc = os.system(cmd)
-	cmd = "cp /usr/bin/usbtuner %s/MbootM/%s/usr/bin" % (meohome, target)
-	rc = os.system(cmd)
-	cmd = "cp /etc/init.d/usbtuner %s/MbootM/%s/etc/init.d" % (meohome, target)
-	rc = os.system(cmd)
-	cmd = "ln -s %s/MbootM/%s/etc/init.d/usbtuner %s/MbootM/%s/etc/rc3.d/S20usbtuner" % (meohome, target, meohome, target)
-	rc = os.system(cmd)
 
 
 	if installsettings == "True":
