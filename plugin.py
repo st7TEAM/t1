@@ -172,7 +172,7 @@ class mbInstallMain(Screen):
 				mydev = parts[0]
 		f.close()
 		
-		#if os_isdir("/usr/lib/enigma2/python/Blackhole") == False:
+		if os_isdir("/usr/lib/enigma2/python/Blackhole") == False:
 			if mydev:
 				out = open("/etc/init.d/bootup", "a")		
 				line = "\nmount " + mydev + " " + self.instdevice
