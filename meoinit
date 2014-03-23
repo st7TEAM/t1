@@ -47,8 +47,6 @@ for mod in dvb; do
 done
 # Hack for loading modules which are not loaded on diffrent kernel images
 /etc/init.d/modutils.sh
-#
-cat /etc/videomode > /proc/stb/video/videomode
 
 #we must wait until udev has created the video device
 (
@@ -59,7 +57,7 @@ if [ -d /proc/stb ]; then
                 fi;
         done;
 fi;
-[ -e /etc/dropbear/dropbear_rsa_host_key ] && /usr/bin/showiframe /boot/bootlogo.mvi || /usr/bin/showiframe /boot/bootlogo_wait.mvi;
+[ -e /etc/dropbear/dropbear_rsa_host_key ] && /usr/bin/showiframe /usr/share/bootlogo.mvi || /usr/bin/showiframe /usr/share/bootlogo_wait.mvi;
 ) &
 
 if [ -f $LIBDIR/kernel/fs/autofs4/autofs4.ko ]; then
@@ -84,7 +82,7 @@ fi
 if [ $TARGET = "Flash" ]; then
 	echo "meoboot is booting image from " $TARGET
 	umount /media/meoboot > /dev/null 2>&1
-	/usr/bin/showiframe /boot/bootlogo.mvi > /dev/null 2>&1
+	/usr/bin/showiframe /usr/share/bootlogo.mvi > /dev/null 2>&1
 else
     if [ -f /tmp/.egamireboot ]; then
 	  break;
@@ -112,7 +110,7 @@ else
 			  /bin/mount /dev/sda1 /media/meoboot/MbootM/$TARGET/media/hdd
 		  fi
 		  if [ -f /media/meoboot/MbootM/$TARGET/sbin/init.sysvinit ]; then
-		      exec /usr/sbin/chroot /media/meoboot/MbootM/$TARGET /sbin/init.sysvinit
+		      exec /usr/sbin/chroot /media/meoboot/MbootM/$TARGET /sbin/init.sysvinit $1
 		  fi
 		  exit 0
 		fi
